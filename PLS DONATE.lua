@@ -17,10 +17,10 @@ local httpservice = game:GetService('HttpService')
 local unclaimed = {}
 local booths = { ["1"] = "72, 3, 36", ["2"] = "83, 3, 161", ["3"] = "11, 3, 36", ["4"] = "100, 3, 59", ["5"] = "72, 3, 166", ["6"] = "2, 3, 42", ["7"] = "-9, 3, 52", ["8"] = "10, 3, 166", ["9"] = "-17, 3, 60", ["10"] = "35, 3, 173", ["11"] = "24, 3, 170", ["12"] = "48, 3, 29", ["13"] = "24, 3, 33", ["14"] = "101, 3, 142", ["15"] = "-18, 3, 142", ["16"] = "60, 3, 33", ["17"] = "35, 3, 29", ["18"] = "0, 3, 160", ["19"] = "48, 3, 173", ["20"] = "61, 3, 170", ["21"] = "91, 3, 151", ["22"] = "-24, 3, 72", ["23"] = "-28, 3, 88", ["24"] = "92, 3, 51", ["25"] = "-28, 3, 112", ["26"] = "-24, 3, 129", ["27"] = "83, 3, 42", ["28"] = "-8, 3, 151" }
 
-local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
-local win = Flux:Window("Indigo Hub", "Pls Donate", Color3.fromRGB(0, 94, 255), Enum.KeyCode.RightShift)
-local tab = win:Tab("Main", "http://www.roblox.com/asset/?id=6023426915")
-local tab2 = win:Tab("Auto-Farm", "http://www.roblox.com/asset/?id=6022668888")
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Win = OrionLib:MakeWindow({Name = "Pls Donate, HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Tab = Win:MakeTab({Name = "Main",Icon = "rbxassetid://4483345998",PremiumOnly = false})
+local Tab2 = Win:MakeTab({Name = "Auto-Farm",Icon = "rbxassetid://4483345998",PremiumOnly = false})
 
 -- FUNCTIONS
 
@@ -175,68 +175,60 @@ end
 
 -- BUTTONS --
 
-tab:Button("Anti AFK", "Disables AFK kicking!", function()
-    antiAfk()
-    Flux:Notification("Anti AFK has been enabled successfully!", "Alright!")
-end)
+Tab:AddButton({
+	Name = "Claim Gifts",
+	Callback = function()
+      		task.spawn(claimGifts)
+  	end    
+})
+		
+Tab:AddButton({
+	Name = "Anti AFK",
+	Callback = function()
+      		antiAfk()
+  	end    
+})
+		
+Tab:AddButton({
+	Name = "Claim Booth",
+	Callback = function()
+      		startAutoFarm2()
+  	end    
+})
+		
+Tab2:AddButton({
+	Name = "Toggle Auto-Farm",
+	Callback = function()
+      		if AutoFarm == false then
+        		AutoFarm = true
+        		startAutoFarm()
+    		else
+        		AutoFarm = false
+        		Controls:Enable()
+    		end
+  	end    
+})
+		
+Tab2:AddTextbox({
+	Name = "Booth Text",
+	Default = "",
+	TextDisappear = false,
+	Callback = function(Value)
+		CustomBoothMessage = tostring(Value)
+   		updateBooth()
+	end	  
+})
 
-tab:Button("Claim Gifts", "Claims all gifts!", function()
-    task.spawn(claimGifts)
-    Flux:Notification("Gifts claimed successfully!", "Alright!")
-end)
-
-tab:Button("Claim Booth", "Claims booth!", function()
-    startAutoFarm2()
-    Flux:Notification("Claimed booth successfully!", "Alright!")
-end)
-
-tab2:Button("Toggle Auto-Farm", "Automatically farm Robux!", function()
-    if AutoFarm == false then
-        AutoFarm = true
-        startAutoFarm()
-        Flux:Notification("AutoFarm is now Enabled!", "Alright!")
-    else
-        AutoFarm = false
-        Controls:Enable()
-        Flux:Notification("AutoFarm is now Disabled!", "Alright!")
-    end
-end)
-
-tab2:Textbox("Booth Text", "Changes booth text!", true, function(valuee)
-    CustomBoothMessage = tostring(valuee)
-    updateBooth()
-    Flux:Notification("Successfully updated booth!", "Alright!")
-end)
-
-tab2:Button("Update Booth", "Updates booth!", function()
-    updateBooth()
-    Flux:Notification("Successfully updated booth!", "Alright!")
-end)
-
-tab2:Button("Server Hop", "Switches Servers!", function()
-    serverHop()
-end)
-
--- tab2:Line()
-
--- tab2:Button("Toggle Begging", "Automatically beg for Robux!", function()
---     if Beg == false then
---         Beg = true
---         print(Beg)
---         Flux:Notification("Begging is now Enabled!", "Alright!")
---     else
---         Beg = false
---         print(Beg)
---         Flux:Notification("Begging is now Disabled!", "Alright!")
---     end
--- end)
-
--- tab2:Slider("Begging Delay", "Begging delay!", 0, 300,5,function(valuee)
---     BegTime = tonumber(valuee)
---     print(BegTime)
--- end)
-
--- tab2:Textbox("Begging Message", "Changes begging message!", true, function(valuee)
---     BegMessage = tostring(valuee)
---     print(BegMessage)
--- end)
+Tab2:AddButton({
+	Name = "Update Booth",
+	Callback = function()
+      		updateBooth()
+  	end    
+})
+		
+Tab2:AddButton({
+	Name = "Server Hop",
+	Callback = function()
+      		serverHop()
+  	end    
+})
