@@ -11,7 +11,7 @@ local QuadHatch = false
 -- local tab2 = win:Tab("Auto-Farm", "http://www.roblox.com/asset/?id=6022668888")
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Win = OrionLib:MakeWindow({Name = "Title of the library", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Win = OrionLib:MakeWindow({Name = "Pet Simulator X", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 local Tab = Win:MakeTab({Name = "Eggs",Icon = "rbxassetid://4483345998",PremiumOnly = false})
 local Eggs = { "None" }
 
