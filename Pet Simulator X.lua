@@ -2,6 +2,8 @@
 
 local EggToAutoHatch = "None"
 local AutoHatch = false
+local TripleHatch = false
+local QuadHatch = false
 
 -- LOCALS --
 
@@ -21,7 +23,7 @@ function grabEggs(world)
     end
 end
 
-function openEgg(egg)
+function openEgg(egg, triple, quad)
     local Network = require(game:GetService("ReplicatedStorage").Library.Client.Network)
     local Fire, Invoke = Network.Fire, Network.Invoke
 
@@ -30,7 +32,7 @@ function openEgg(egg)
         return true
     end)
 
-    Network.Invoke("Buy Egg", egg, false, false)
+    Network.Invoke("Buy Egg", egg, triple, quad)
 end
 
 grabEggs("Spawn Eggs")
@@ -43,6 +45,8 @@ grabEggs("Doodle Eggs")
 
 -- BUTTONS --
 
+Tab:AddLabel("Disclaimer: Must be in world where the egg is to work!")
+
 Tab:AddToggle({
 	Name = "Auto Hatch Egg",
 	Default = false,
@@ -52,13 +56,30 @@ Tab:AddToggle({
 	end    
 })
 
-Tab:AddTextbox({
+Tab:AddDropdown({
 	Name = "Egg To Auto Hatch",
-	Default = "None"
+	Default = "None",
 	Options = Eggs,
 	Callback = function(Value)
-		EggToAutoHatch = Value
-		print(EggToAutoHatch)
+	    EggToAutoHatch = Value
+	end    
+})
+
+Tab:AddDropdown({
+	Name = "Opening Type",
+	Default = "Single",
+	Options = {"Single", "Triple", "Quad"},
+	Callback = function(Value)
+	    if Value == "Triple" then
+		    TripleHatch = true
+		    QuadHatch = false
+		elseif Value == "Quad" then
+		    TripleHatch = false
+		    QuadHatch = true
+		else
+		    TripleHatch = false
+		    QuadHatch = false
+		end
 	end    
 })
 
@@ -66,6 +87,6 @@ Tab:AddTextbox({
 
 while wait(0.25) do
     if AutoHatch == true then
-        openEgg(EggToAutoHatch)
+        openEgg(EggToAutoHatch, TripleHatch, QuadHatch)
     end
 end
