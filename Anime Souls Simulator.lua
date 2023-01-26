@@ -2,8 +2,7 @@ local Enemies = {}
 local Plr = game.Players.LocalPlayer
 local vu = game:GetService("VirtualUser")
 local OrionLib = loadstring(game:HttpGet(("https://raw.githubusercontent.com/shlexware/Orion/main/source")))()
-local Win =
-    OrionLib:MakeWindow({Name = "Pet Simulator X", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Win = OrionLib:MakeWindow({Name = "Pet Simulator X", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 local Tab = Win:MakeTab({Name = "Main", Icon = "rbxassetid://4483345998", PremiumOnly = false})
 
 _G.SecureMode = true
