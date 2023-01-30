@@ -20,7 +20,7 @@ local booths = { ["1"] = "72, 3, 36", ["2"] = "83, 3, 161", ["3"] = "11, 3, 36",
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Win = OrionLib:MakeWindow({Name = "Pls Donate, HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 local Tab = Win:MakeTab({Name = "Main",Icon = "rbxassetid://4483345998",PremiumOnly = false})
-local Tab2 = Win:MakeTab({Name = "Auto-Farm",Icon = "rbxassetid://4483345998",PremiumOnly = false})
+local Tab2 = Win:MakeTab({Name = "Auto Farm",Icon = "rbxassetid://4483345998",PremiumOnly = false})
 
 -- FUNCTIONS
 
@@ -140,9 +140,6 @@ end
 
 function serverHop()
 	local gameId = "8737602449"
-	if vcEnabled and getgenv().settings.vcServer then
-		gameId = "8943844393"
-	end
 	local servers = {}
 	local req = httprequest({Url = "https://games.roblox.com/v1/games/".. gameId.."/servers/Public?sortOrder=Desc&limit=100"})
 	local body = httpservice:JSONDecode(req.Body)
