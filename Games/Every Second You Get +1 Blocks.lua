@@ -65,6 +65,27 @@ local ToggleClaim = Tab:CreateToggle({
 	end,
 })
 
+local ButtonUpgrade = Tab:CreateButton({
+   Name = "Upgrade Tower",
+   Callback = function()
+        _G.counter = 1
+        _G.autobuy = true
+
+        function get_next_number()
+            local current_number = _G.counter
+            _G.counter = _G.counter + 1
+            return current_number
+        end
+
+        while _G.autobuy == true do
+            wait()
+            local next_number = get_next_number()
+            local args = { next_number }
+            game:GetService("ReplicatedStorage").Remotes.PurchaseTower:InvokeServer(unpack(args))
+        end
+   end,
+})
+
 local SliderSpeed = Tab2:CreateSlider({
 	Name = "Speed",
 	Range = {0, 250},
