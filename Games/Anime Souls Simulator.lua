@@ -12,8 +12,8 @@ local Window = Rayfield:CreateWindow({
    LoadingSubtitle = "by DuxV2",
    ConfigurationSaving = {
       Enabled = true,
-      FolderName = nil,
-      FileName = "Lunar Hub ASS"
+      FolderName = "Lunar Hub",
+      FileName = "Anime Souls Simulator"
    },
    Discord = {
       Enabled = false,
