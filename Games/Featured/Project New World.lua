@@ -516,14 +516,14 @@ local Window = Rayfield:CreateWindow({
       Title = "Lunar Hub",
       Subtitle = "Key System",
       Note = "Join our discord (discord.gg/LUNARINVITE)",
-      FileName = "SiriusKey",
+      FileName = "LunarKey",
       SaveKey = true,
       GrabKeyFromSite = false,
       Key = "Hello"
    }
 })
 
-local FarmingTab = Window:CreateTab("Farming");
+local FarmingTab = Window:CreateTab("Farming", 4483345998);
 FarmingTab:CreateSection("Farming");
 
 CombatToggleTable = FarmingTab:CreateToggle({
@@ -609,7 +609,7 @@ FarmingTab:CreateToggle({
     end;
 })
 
-local QuestTab = Window:CreateTab("Quests");
+local QuestTab = Window:CreateTab("Quests", 4483362458);
 QuestTab:CreateSection("Main");
 
 QuestTab:CreateToggle({
@@ -698,10 +698,10 @@ QuestTab:CreateButton({
     end;
 })
 
-local UpgradeTab = Window:CreateTab("Upgrade");
-UpgradeTab:CreateSection("Auto Upgrade");
+local MiscTab = Window:CreateTab("Misc", 6023426915);
+MiscTab:CreateSection("Misc");
 
-UpgradeTab:CreateDropdown({
+MiscTab:CreateDropdown({
     Name = "Stats",
     Options = Client.Locals.Stats,
     CurrentOption = "Combat",
@@ -710,7 +710,7 @@ UpgradeTab:CreateDropdown({
     end;
 })
 
-UpgradeTab:CreateToggle({
+MiscTab:CreateToggle({
     Name = "Auto Upgrade Selected",
     Callback = function(AutoUpgradeValue)
         Client.Toggles.AutoUpgrade = AutoUpgradeValue;
@@ -725,7 +725,7 @@ UpgradeTab:CreateToggle({
     end;
 })
 
-UpgradeTab:CreateToggle({
+MiscTab:CreateToggle({
     Name = "Auto Upgrade All",
     Callback = function(AutoUpgradeAllValue)
         Client.Toggles.AutoUpgradeAll = AutoUpgradeAllValue;
@@ -739,9 +739,6 @@ UpgradeTab:CreateToggle({
         end)
     end;
 })
-
-local MiscTab = Window:CreateTab("Misc");
-MiscTab:CreateSection("Misc");
 
 MiscTab:CreateButton({
     Name = "Rejoin",
