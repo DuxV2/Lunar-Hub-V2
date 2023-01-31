@@ -1,6 +1,6 @@
 local Request = (syn and syn.request or request or http and http.request or http_request) or error("No request function found")
 local HttpService = game:GetService("HttpService")
-local Network = loadstring(game:HttpGet(("https://raw.githubusercontent.com/Uvxtq/Project-AlphaZero/main/AlphaZero/CustomFuncs/Network.lua")))();
+local Network = loadstring(game:HttpGet(("https://raw.githubusercontent.com/DuxV2/Lunar-Hub-V2/main/Network/Utils/Network.lua?token=GHSAT0AAAAAAB6ALCWLAJCOWR4OINJRIQ3UY6ZF6YQ")))();
 
 local WebhookSettings = {
     ["@everyone"] = false;
