@@ -37,7 +37,7 @@ local Window = Rayfield:CreateWindow({
 
 local Tab = Window:CreateTab("Main", 4483345998)
 local Tab2 = Window:CreateTab("Misc", 6023426915)
-local Section = Tab:CreateSection("Combat")
+local Section = Tab:CreateSection("Main")
 local Section2 = Tab2:CreateSection("Misc")
 
 -- Elements -- 
@@ -45,7 +45,7 @@ local Section2 = Tab2:CreateSection("Misc")
 local ToggleDepo = Tab:CreateToggle({
 	Name = "Auto Deposit Bananas",
 	CurrentValue = false,
-	Flag = "ToggleDepo", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Flag = "ToggleDepo",
 	Callback = function(Value)
             _G.depo = Value
             while _G.depo == true do
