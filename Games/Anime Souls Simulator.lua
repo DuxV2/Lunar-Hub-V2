@@ -1,12 +1,48 @@
 local Enemies = {}
 local Plr = game.Players.LocalPlayer
 local vu = game:GetService("VirtualUser")
-local OrionLib = loadstring(game:HttpGet(("https://raw.githubusercontent.com/shlexware/Orion/main/source")))()
-local Win = OrionLib:MakeWindow({Name = "Anime Souls Simulator", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
-local Tab = Win:MakeTab({Name = "Main", Icon = "rbxassetid://4483345998", PremiumOnly = false})
 
-_G.SecureMode = true
-_G.enemy = "None"
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+local Window = Rayfield:CreateWindow({
+   Name = "Lunar Hub",
+   LoadingTitle = "Lunar Hub",
+   LoadingSubtitle = "by DuxV2",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil,
+      FileName = "Lunar Hub ASS"
+   },
+   Discord = {
+      Enabled = false,
+      Invite = "LUNARINVITE",
+      RememberJoins = true
+   },
+   KeySystem = true,
+   KeySettings = {
+      Title = "Lunar Hub",
+      Subtitle = "Key System",
+      Note = "Join our discord (discord.gg/LUNARINVITE)",
+      FileName = "SiriusKey",
+      SaveKey = true,
+      GrabKeyFromSite = false,
+      Key = "Hello"
+   }
+})
+
+
+local Tab = Window:CreateTab("Combat", 4483362458)
+local Section = Tab:CreateSection("Combat")
+
+-- Functions -- 
+
+function note(t, c)
+    Rayfield:Notify({
+        Title = t,
+        Content = c,
+        Duration = 6.5,
+        Image = 4483362458,
+    })
+end
 
 for i, v in pairs(game:GetService("Workspace")["_ENEMIES"]:GetDescendants()) do
     if v:IsA "Model" and v.Parent.Parent.Name == "_ENEMIES" then
@@ -44,49 +80,49 @@ local function getClosestMob()
     return thing
 end
 
-Tab:AddToggle(
-    {
-        Name = "Auto Attack",
-        Default = false,
-        Callback = function(Value)
-            AutoHatch = Value
-            a = Value
-            while a do
-                task.wait()
-                local args = {
-                    [1] = {
-                        [1] = "Hit",
-                        [2] = getClosest().Parent
-                    }
-                }
+-- Elements --
 
-                game:GetService("ReplicatedStorage").Remotes.Server:FireServer(unpack(args))
-            end
-        end
-    }
-)
 
-Tab:AddDropdown(
-    {
-        Name = "Enemies",
-        Options = Enemies,
-        Default = "Enemy List",
-        Callback = function(Value)
-            _G.enemy = Value
-        end
-    }
-)
+local ToggleAttack = Tab:CreateToggle({
+   Name = "Auto Attack",
+   CurrentValue = false,
+   Flag = "ToggleAttack",
+   Callback = function(Value)
+        a = Value
+        while a do
+        task.wait()
+        local args = {
+            [1] = {
+                [1] = "Hit",
+                [2] = getClosest().Parent
+            }
+        }
 
-Tab:AddToggle(
-    {
-        Name = "Auto Mob",
-        Default = false,
-        Callback = function(Value)
-            b = Value
-            while b do
-                task.wait()
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = getClosestMob().CFrame
-            end
+        game:GetService("ReplicatedStorage").Remotes.Server:FireServer(unpack(args))
         end
-    }
-)
+   end,
+})
+
+
+local DropdownEnemies = Tab:CreateDropdown({
+   Name = "Enemies",
+   Options = Enemies,
+   CurrentOption = "Enemy List",
+   Flag = "DropdownEnemies",
+   Callback = function(Option)
+        _G.enemy = Option
+   end,
+})
+
+local ToggleMob = Tab:CreateToggle({
+   Name = "Auto Mob",
+   CurrentValue = false,
+   Flag = "ToggleMob",
+   Callback = function(Value)
+        b = Value
+        while b do
+            task.wait()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = getClosestMob().CFrame
+        end
+   end,
+})
