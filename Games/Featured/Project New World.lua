@@ -1,4 +1,4 @@
-local Utils = loadstring(game:HttpGet(("https://raw.githubusercontent.com/DuxV2/Lunar-Hub-V2/main/Network/Utils.lua?token=GHSAT0AAAAAAB6ALCWK7SSN5XKGVEY466LEY6ZGCMA")))();
+local Utils = loadstring(game:HttpGet(("https://raw.githubusercontent.com/DuxV2/Essentials/main/Utils.lua")))();
 local Players = game:GetService("Players");
 local LocalPlayer = Players.LocalPlayer;
 local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait();
