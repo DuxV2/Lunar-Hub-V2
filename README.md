@@ -1,15 +1,21 @@
 # Lunar Hub: REBORN
 
+## Changelog
+```lua
+[+] Doors script has been updated for the Hotel + Update
+```
+
 ## Supported Games Counter: 9
 
 ## Featured Games:
 ```lua
-Pet Simulator X
-Combat Warriors
 Anime Souls Simulator
+Combat Warriors
+Doors [NEW]
 Monkey Tycoon
-Project New World
+Pet Simulator X
 PLS DONATE
+Project New World
 ```
 
 ## Other Games:
