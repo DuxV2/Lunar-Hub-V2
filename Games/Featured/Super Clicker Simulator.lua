@@ -7,6 +7,34 @@ getgenv().AutoEvolve = false;
 getgenv().AntiAFK = false;
 local VirtualUser = game:GetService("VirtualUser")
 
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "Lunar Hub - "..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,
+   LoadingTitle = "Lunar Hub",
+   LoadingSubtitle = "by DuxV2",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = "Lunar Hub",
+      FileName = "Super Clicker Simulator"
+   },
+   Discord = {
+      Enabled = false,
+      Invite = "LUNARINVITE",
+      RememberJoins = true
+   },
+   KeySystem = true,
+   KeySettings = {
+      Title = "Lunar Hub",
+      Subtitle = "Key System",
+      Note = "Join our discord (discord.gg/LUNARINVITE)",
+      FileName = "LunarKey",
+      SaveKey = true,
+      GrabKeyFromSite = false,
+      Key = "Hello"
+   }
+})
+
 game:GetService("Players").LocalPlayer.Idled:connect(function()
     if AntiAFK == true then
         VirtualUser:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
@@ -82,34 +110,6 @@ function autoEvolve()
         end
     end)
 end
-
-local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
-
-local Window = Rayfield:CreateWindow({
-   Name = "Lunar Hub",
-   LoadingTitle = "Lunar Hub",
-   LoadingSubtitle = "by DuxV2",
-   ConfigurationSaving = {
-      Enabled = true,
-      FolderName = "Lunar Hub",
-      FileName = "Super Clicker Simulator"
-   },
-   Discord = {
-      Enabled = false,
-      Invite = "LUNARINVITE",
-      RememberJoins = true
-   },
-   KeySystem = true,
-   KeySettings = {
-      Title = "Lunar Hub",
-      Subtitle = "Key System",
-      Note = "Join our discord (discord.gg/LUNARINVITE)",
-      FileName = "LunarKey",
-      SaveKey = true,
-      GrabKeyFromSite = false,
-      Key = "Hello"
-   }
-})
 
 local farmingTab = Window:CreateTab("Farming", 4483345998)
 local eggTab = Window:CreateTab("Eggs", 4483362458)
