@@ -46,7 +46,8 @@ local plr = game.Players.LocalPlayer
 local char = plr.Character or plr.CharacterAdded:Wait()
 local hum = char:WaitForChild("Humanoid")
 
-function note(t, c)
+function 
+    (t, c)
     Rayfield:Notify({
         Title = t,
         Content = c,
@@ -1087,10 +1088,10 @@ local ToggleLibrary =
 
                             local msg
                             if code:find("_") then
-                                note("Library Code", "Get All Books First"
+                                note("Library Code", "Get All Books First")
                                 task.wait(3)
                             else
-                                note("Library Code", "Code: "..code
+                                note("Library Code", tostring("Code: "..code))
                                 task.wait(6)
                             end
 
