@@ -19,7 +19,7 @@ local booths = { ["1"] = "72, 3, 36", ["2"] = "83, 3, 161", ["3"] = "11, 3, 36",
 
 local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
 local Window = Rayfield:CreateWindow({
-   Name = "Lunar Hub",
+   Name = "Lunar Hub - "..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,
    LoadingTitle = "Lunar Hub",
    LoadingSubtitle = "by DuxV2",
    ConfigurationSaving = {
