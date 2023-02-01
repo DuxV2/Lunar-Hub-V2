@@ -7,7 +7,7 @@ _G.crate = "None"
 
 local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
 local Window = Rayfield:CreateWindow({
-   Name = "Lunar Hub - "..game.Name,
+   Name = "Lunar Hub - "..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,
    LoadingTitle = "Lunar Hub",
    LoadingSubtitle = "by DuxV2",
    ConfigurationSaving = {
