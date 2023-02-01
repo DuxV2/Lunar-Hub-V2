@@ -65,6 +65,15 @@ local Client = {
     };
 };
 
+function note(t, c)
+    Rayfield:Notify({
+        Title = t,
+        Content = c,
+        Duration = 6.5,
+        Image = 4483362458,
+    })
+end
+
 local SelectedWeapon;
 local CombatToggleTable;
 
@@ -539,7 +548,7 @@ local CombatToggleTable = FarmingTab:CreateToggle({
                 if Weapon then
                     Weapon:Activate();
                 else
-                    Utils.Network:Notify("Error", "No weapon found in the character; please equip a weapon.", 5)
+		    note("Error", "No weapon found in the character; please equip a weapon.")
                     CombatToggleTable:Set(false)
                     break;
                 end
