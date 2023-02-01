@@ -14,6 +14,33 @@ local HttpService = game:GetService("HttpService")
 local MarketplaceService = game:GetService("MarketplaceService");
 local GameName = MarketplaceService:GetProductInfo(game.PlaceId).Name;
 
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+local Window = Rayfield:CreateWindow({
+   Name = "Lunar Hub - "..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,
+   LoadingTitle = "Lunar Hub",
+   LoadingSubtitle = "by DuxV2",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = "Lunar Hub",
+      FileName = "Project New World"
+   },
+   Discord = {
+      Enabled = false,
+      Invite = "LUNARINVITE",
+      RememberJoins = true
+   },
+   KeySystem = true,
+   KeySettings = {
+      Title = "Lunar Hub",
+      Subtitle = "Key System",
+      Note = "Join our discord (discord.gg/LUNARINVITE)",
+      FileName = "LunarKey",
+      SaveKey = true,
+      GrabKeyFromSite = false,
+      Key = "Hello"
+   }
+})
+
 local Client = {
     Toggles = {
         AutoAttack = false;
@@ -495,33 +522,6 @@ Humanoid.Died:Connect(function()
         autoQuestFarm();
     end
 end)
-
-local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
-local Window = Rayfield:CreateWindow({
-   Name = "Lunar Hub",
-   LoadingTitle = "Lunar Hub",
-   LoadingSubtitle = "by DuxV2",
-   ConfigurationSaving = {
-      Enabled = true,
-      FolderName = "Lunar Hub",
-      FileName = "Project New World"
-   },
-   Discord = {
-      Enabled = false,
-      Invite = "LUNARINVITE",
-      RememberJoins = true
-   },
-   KeySystem = true,
-   KeySettings = {
-      Title = "Lunar Hub",
-      Subtitle = "Key System",
-      Note = "Join our discord (discord.gg/LUNARINVITE)",
-      FileName = "LunarKey",
-      SaveKey = true,
-      GrabKeyFromSite = false,
-      Key = "Hello"
-   }
-})
 
 local FarmingTab = Window:CreateTab("Farming", 4483345998);
 FarmingTab:CreateSection("Farming");
