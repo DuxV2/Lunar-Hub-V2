@@ -526,7 +526,8 @@ end)
 local FarmingTab = Window:CreateTab("Farming", 4483345998);
 FarmingTab:CreateSection("Farming");
 
-CombatToggleTable = FarmingTab:CreateToggle({
+local CombatToggleTable = FarmingTab:CreateToggle({
+    Flag = "ToggleAttack",
     Name = "Auto Attack",
     Callback = function(AutoAttackValue)
         Client.Toggles.AutoAttack = AutoAttackValue;
@@ -547,8 +548,9 @@ CombatToggleTable = FarmingTab:CreateToggle({
     end;
 })
 
-FarmingTab:CreateToggle({
+local tpunder = FarmingTab:CreateToggle({
     Name = "Teleport Under NPC",
+    Flag = "TPUnder",
     Callback = function(AutoTeleportValue)
         Client.Toggles.AutoTeleport = AutoTeleportValue;
 
@@ -573,13 +575,14 @@ FarmingTab:CreateToggle({
     end;
 })
 
-FarmingTab:CreateDropdown({
+local method = FarmingTab:CreateDropdown({
     Name = "Method",
     Options = {
         "Closest";
         "Highest Level";
         "Lowest Level";
     },
+    Flag = "Method",
     CurrentOption = "Closest",
     Callback = function(MethodValue)
         Client.Toggles.Method = MethodValue;
@@ -595,15 +598,17 @@ FarmingTab:CreateButton({
     end;
 })
 
-FarmingTab:CreateToggle({
+local infjump = FarmingTab:CreateToggle({
     Name = "Infinite Jump",
+    Flag = "ToggleJump",
     Callback = function(NoJumpCooldownValue)
         NoJumpCooldownT = NoJumpCooldownValue;
     end;
 })
 
-FarmingTab:CreateToggle({
+local infstam = FarmingTab:CreateToggle({
     Name = "Infinite Stamina",
+    Flag = "ToggleJump",
     Callback = function(InfStaminaValue)
         InfStaminaT = InfStaminaValue;
     end;
@@ -612,8 +617,9 @@ FarmingTab:CreateToggle({
 local QuestTab = Window:CreateTab("Quests", 4483362458);
 QuestTab:CreateSection("Main");
 
-QuestTab:CreateToggle({
+local quest = QuestTab:CreateToggle({
 	Name = "Quest Farm",
+	Flag = "ToggleQuest",
 	CurrentValue = false,
 	Callback = function(QuestFarmValue)
         Client.Toggles.QuestFarming = QuestFarmValue
@@ -625,23 +631,25 @@ QuestTab:CreateToggle({
 
 QuestTab:CreateSection("Method")
 
-QuestTab:CreateDropdown({
+local method2 = QuestTab:CreateDropdown({
     Name = "Method",
     Options = {
         "Above",
         "Below"
     },
     CurrentOption = "Below",
+    Flag = "Method2",
     Callback = function(MethodValue)
         Client.Toggles.QuestFarmMethod = MethodValue;
     end;
 })
 
-QuestTab:CreateSlider({
+local dist = QuestTab:CreateSlider({
    Name = "Distance",
    Range = {0, 25},
    Increment = 0.1,
    Suffix = "Studs",
+   Flag = "QuestStuds",
    CurrentValue = 8.3,
    Callback = function(Value)
         Client.Toggles.FarmDistance = Value
@@ -666,14 +674,16 @@ SelectedWeapon = GetWeapons()[1];
 local WeaponsList = QuestTab:CreateDropdown({
     Name = "Weapon",
     Options = GetWeapons(),
+    Flag = "Weapon",
     CurrentOption = GetWeapons()[1],
     Callback = function(Weapon)
         SelectedWeapon = Weapon;
     end;
 })
 
-QuestTab:CreateToggle({
+local equip = QuestTab:CreateToggle({
     Name = "Auto Equip Weapon",
+    Flag = "EquipWeapon",
     Callback = function(AutoEquipWeaponValue)
         Client.Toggles.AutoEquipWeapon = AutoEquipWeaponValue;
 
@@ -701,17 +711,19 @@ QuestTab:CreateButton({
 local MiscTab = Window:CreateTab("Misc", 6023426915);
 MiscTab:CreateSection("Misc");
 
-MiscTab:CreateDropdown({
+local stats = MiscTab:CreateDropdown({
     Name = "Stats",
     Options = Client.Locals.Stats,
     CurrentOption = "Combat",
+    Flag = "Stats",
     Callback = function(Stat)
         Client.Toggles.SelectedUpgrade = Stat;
     end;
 })
 
-MiscTab:CreateToggle({
+local upg = MiscTab:CreateToggle({
     Name = "Auto Upgrade Selected",
+    Flag = "UpgradeSelected",
     Callback = function(AutoUpgradeValue)
         Client.Toggles.AutoUpgrade = AutoUpgradeValue;
 
@@ -725,8 +737,9 @@ MiscTab:CreateToggle({
     end;
 })
 
-MiscTab:CreateToggle({
+local upgall = MiscTab:CreateToggle({
     Name = "Auto Upgrade All",
+    Flag = "UpgradeAll",
     Callback = function(AutoUpgradeAllValue)
         Client.Toggles.AutoUpgradeAll = AutoUpgradeAllValue;
 
@@ -766,8 +779,9 @@ MiscTab:CreateButton({
     end;
 })
 
-MiscTab:CreateToggle({
-    Name = "Auto Collect Chests",
+local collectchest = MiscTab:CreateToggle({
+    Name = "Auto Collect Chests", 
+    Flag = "CollectChests",
     Callback = function(AutoCollectChestsValue)
         Client.Toggles.AutoCollectChests = AutoCollectChestsValue;
 
