@@ -9,14 +9,16 @@
 
 ## Featured Games:
 ```lua
-Anime Souls Simulator
-Doors [NEW]
-Every Second You Get +1 Blocks
-Every Second You Get +1 Jump
-Monkey Tycoon
-Pet Simulator X
-PLS DONATE
-Project New World
-Race Clicker
-Super Clicker Simulator
+local Supported_Games = {
+  "Anime Souls Simulator",
+  "Doors [NEW]",
+  "Every Second You Get +1 Blocks",
+  "Every Second You Get +1 Jump",
+  "Monkey Tycoon",
+  "Pet Simulator X",
+  "PLS DONATE",
+  "Project New World",
+  "Race Clicker",
+  "Super Clicker Simulator",
+}
 ```
