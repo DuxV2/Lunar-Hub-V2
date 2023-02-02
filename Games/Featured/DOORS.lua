@@ -46,16 +46,6 @@ local plr = game.Players.LocalPlayer
 local char = plr.Character or plr.CharacterAdded:Wait()
 local hum = char:WaitForChild("Humanoid")
 
-function 
-    (t, c)
-    Rayfield:Notify({
-        Title = t,
-        Content = c,
-        Duration = 6.5,
-        Image = 4483362458,
-    })
-end
-
 function esp(what, color, core, name)
     local parts
 
@@ -854,7 +844,10 @@ local ToggleNotify =
                                 not v:IsDescendantOf(workspace)
 
                             if v:IsDescendantOf(workspace) then
-                                note("Entity Notifier", tostring(v.Name:gsub("Moving", ""):lower() .. " is coming go hide"))
+                                local h = Instance.new("Message", workspace)
+                                h.Text = v.Name:gsub("Moving", ""):lower() .. " is coming go hide"
+                                task.wait(5)
+                                h:Destroy()
                             end
                         end
                     end
@@ -1088,10 +1081,12 @@ local ToggleLibrary =
 
                             local msg
                             if code:find("_") then
-                                note("Library Code", "Get All Books First")
+                                msg = Instance.new("Hint", workspace)
+                                msg.Text = "get all books first"
                                 task.wait(3)
                             else
-                                note("Library Code", tostring("Code: "..code))
+                                msg = Instance.new("Message", Workspace)
+                                msg.Text = "the code is: " .. code
                                 task.wait(6)
                             end
 
