@@ -16,4 +16,6 @@ elseif game.PlaceId == 11063612131 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/DuxV2/Lunar-Hub-V2/main/Games/Featured/Every%20Second%20You%20Get%20%2B1%20Jump.lua"))()
 elseif game.PlaceId == 8737602449 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/DuxV2/Lunar-Hub-V2/main/Games/Featured/Race%20Clicker.lua"))()
+else
+    game.Players.LocalPlayer:Kick("This game is not supported! View our supported games at github.com/DuxV2/Lunar-Hub-V2")
 end
